@@ -166,7 +166,7 @@ export default function FilmsSection({ eyebrow, title, body, films, wall }: Prop
                         fetchPriority={i < 3 ? "high" : "low"}
                         className="film-still h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-data-[active=true]:group-hover:scale-[1.03]"
                       />
-                                            <span className="film-play absolute left-1/2 top-1/2 flex h-[60px] w-[60px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-ink/25 ring-1 ring-bone/80 backdrop-blur-md transition-transform duration-300 group-hover:scale-105">
+                                            <span className="film-play absolute left-1/2 top-1/2 flex h-[60px] w-[60px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-ink/40 ring-1 ring-bone/80 transition-transform duration-300 group-hover:scale-105">
                         <svg viewBox="0 0 24 24" className="ml-0.5 h-5 w-5 fill-bone" aria-hidden>
                           <path d="M7 4.5v15l13-7.5z" />
                         </svg>
@@ -205,7 +205,7 @@ export default function FilmsSection({ eyebrow, title, body, films, wall }: Prop
                 onClick={() => go(active + dir)}
                 disabled={dir < 0 ? active === 0 : active === films.length - 1}
                 aria-label={dir < 0 ? "Previous film" : "Next film"}
-                className="flex h-11 w-11 items-center justify-center rounded-full bg-bone/60 ring-1 ring-ink/25 backdrop-blur-sm transition hover:bg-bone hover:ring-ink/50 disabled:opacity-35 disabled:hover:bg-bone/60"
+                className="flex h-11 w-11 items-center justify-center rounded-full bg-bone/85 ring-1 ring-ink/25 transition hover:bg-bone hover:ring-ink/50 disabled:opacity-35 disabled:hover:bg-bone/85"
               >
                 <svg viewBox="0 0 24 24" className={`h-4 w-4 ${dir < 0 ? "rotate-180" : ""}`} fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden>
                   <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />

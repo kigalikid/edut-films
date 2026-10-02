@@ -14,16 +14,18 @@ const label = "font-mono text-[11px] uppercase tracking-[0.22em]";
 // Each Hebrew letter together with its vowel points, so a letter and its marks arrive as one.
 const hebrewLetters = brand.hebrew.match(/\p{L}\p{M}*/gu) ?? [brand.hebrew];
 const lineWords = meaning.line.split(" ");
+const headlineWords = hero.headline.split(" ");
 
 export default function Home() {
   const hasContact = Boolean(contact.email || contact.whatsapp);
 
   return (
     <main className="flex-1">
-      {/* Hero: one full screen, film behind, words at the foot */}
-      <section className="relative flex min-h-[100svh] flex-col bg-ink text-bone">
+      {/* Hero: one full screen, film behind, words in the upper part. On arrival the
+          headline is set down word by word and the wall of the Old City rises into place. */}
+      <section className="hero relative flex min-h-[100svh] flex-col bg-ink text-bone">
         <HeroVideo />
-        <header className="relative flex w-full items-center justify-between px-5 py-6 sm:px-6">
+        <header className="hero-fade relative flex w-full items-center justify-between px-5 py-6 sm:px-6">
           <a href="#" className="flex items-baseline gap-3" aria-label={brand.name}>
             <span lang="he" dir="rtl" className="font-hebrew text-[26px] leading-none">
               {brand.hebrew}
@@ -41,11 +43,22 @@ export default function Home() {
         </header>
 
         <div className="relative my-auto w-full px-5 pb-[26vh] pt-6 sm:px-6">
-          <h1 className="max-w-[14ch] font-display text-[44px] leading-[1.04] tracking-[-0.01em] sm:text-[68px] lg:text-[86px]">
-            {hero.headline}
+          <h1
+            aria-label={hero.headline}
+            className="max-w-[14ch] font-display text-[44px] leading-[1.04] tracking-[-0.01em] sm:text-[68px] lg:text-[86px]"
+          >
+            {headlineWords.map((w, i) => (
+              <Fragment key={i}>
+                <span className="hero-word" aria-hidden style={{ "--i": i } as CSSProperties}>
+                  {w}
+                </span>{" "}
+              </Fragment>
+            ))}
           </h1>
-          <p className="mt-7 max-w-[32rem] text-[17px] leading-relaxed text-bone/80 sm:text-[18px]">{hero.sub}</p>
-          <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
+          <p className="hero-up mt-7 max-w-[32rem] text-[17px] leading-relaxed text-bone/80 sm:text-[18px]" style={{ "--d": "0.95s" } as CSSProperties}>
+            {hero.sub}
+          </p>
+          <div className="hero-up mt-10 flex flex-wrap items-center gap-x-8 gap-y-4" style={{ "--d": "1.15s" } as CSSProperties}>
             <a
               href="#contact"
               className="rounded-full bg-bone px-6 py-3 text-[15px] font-medium text-ink transition-colors hover:bg-white"
@@ -57,7 +70,9 @@ export default function Home() {
             </a>
           </div>
         </div>
-        <JerusalemWall className="absolute inset-x-0 bottom-0" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 overflow-hidden">
+          <JerusalemWall className="hero-wall" />
+        </div>
       </section>
 
       {/* The name: the word is set down letter by letter, right to left, as Hebrew is read */}
