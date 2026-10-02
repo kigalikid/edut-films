@@ -36,13 +36,13 @@ export default function Home() {
             <a href="#films" className="hidden hover:text-bone sm:inline">Films</a>
             <a href="#services" className="hidden hover:text-bone sm:inline">Services</a>
             <a href="#about" className="hidden hover:text-bone sm:inline">About</a>
-            <a href="#contact" className="rounded-full border border-bone/35 px-4 py-2 text-bone hover:border-bone">
+            <a href="#contact" className="rounded-full border border-bone/35 px-4 py-3 text-bone hover:border-bone sm:py-2">
               Enquire
             </a>
           </nav>
         </header>
 
-        <div className="relative my-auto w-full px-5 pb-[26vh] pt-6 sm:px-6">
+        <div className="relative mb-auto mt-[5vh] w-full px-5 pb-[140px] pt-6 sm:my-auto sm:px-6 sm:pb-[26vh]">
           <h1
             aria-label={hero.headline}
             className="max-w-[14ch] font-display text-[44px] leading-[1.04] tracking-[-0.01em] sm:text-[68px] lg:text-[86px]"

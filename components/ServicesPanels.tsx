@@ -23,8 +23,11 @@ export default function ServicesPanels({ services }: { services: readonly Servic
   const [moving, setMoving] = useState(false);
 
   useEffect(() => {
-    // no timer for people who have asked for less motion
-    const ok = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    // No timer for people who have asked for less motion, and none on phones: there the
+    // panels are stacked, so opening one on a timer would shift the page under the reader.
+    const ok =
+      !window.matchMedia("(prefers-reduced-motion: reduce)").matches &&
+      window.matchMedia("(min-width: 768px)").matches;
     const id = window.setTimeout(() => setMoving(ok), 0);
     return () => window.clearTimeout(id);
   }, []);
