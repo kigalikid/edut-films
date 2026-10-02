@@ -1,0 +1,20 @@
+<!doctype html>
+<!-- Not a page for visitors. Netlify reads this file at deploy time to learn the shape of the
+     enquiry form, so it can accept submissions from the real form on the home page. -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex" />
+    <title>Edut Films enquiry form definition</title>
+  </head>
+  <body>
+    <form name="enquiry" data-netlify="true" netlify-honeypot="website" hidden>
+      <input type="text" name="name" />
+      <input type="text" name="group" />
+      <input type="text" name="size" />
+      <input type="text" name="dates" />
+      <input type="email" name="email" />
+      <input type="text" name="website" />
+    </form>
+  </body>
+</html>
