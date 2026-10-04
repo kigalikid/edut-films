@@ -85,7 +85,8 @@ export const closing = {
 };
 
 // Michael's films, from his two public YouTube playlists ("Galilee Edits" and "Israel Edits").
-// The carousel shows them newest first, by `published` (the YouTube publish date).
+// The carousel shows them newest first, by `published` (the YouTube publish date),
+// except that a film marked `first: true` always leads.
 // To add a film, add a line with its date; to drop one, delete its line.
 export type Film = {
   id: string; // YouTube video id
@@ -94,6 +95,7 @@ export type Film = {
   length: string;
   published: string; // YYYY-MM-DD
   thumb?: "sd"; // set when YouTube has no full-size still for the video
+  first?: true; // always opens the carousel, whatever its date
 };
 
 export const filmsIntro = {
@@ -103,6 +105,7 @@ export const filmsIntro = {
 };
 
 const filmList: Film[] = [
+  { id: "qENv5Y7MwzA", title: "Hope City in Israel: Feb 2026", place: "Israel", length: "1:33", published: "2026-10-03", first: true },
   { id: "w1u35MEqC4w", title: "Jan Barendse: Beit Virginia Retreat in Migdal", place: "Galilee", length: "1:41", published: "2026-09-24" },
   { id: "HVMTVKaKebw", title: "What Magdala Has Taught Me", place: "Galilee", length: "10:05", published: "2026-09-18" },
   { id: "EpmmbXdu0L4", title: "Women\u2019s Day 2025", place: "Galilee", length: "1:11", published: "2025-03-12" },
@@ -119,8 +122,14 @@ const filmList: Film[] = [
   { id: "x0XR9RwaBUU", title: "One Step Closer Intro", place: "Galilee", length: "1:46", published: "2024-11-13" },
 ];
 
-// Newest first. Films published the same day keep the order written above.
+// A film marked `first` leads; the rest follow newest first.
+// Films published the same day keep the order written above.
 export const films: Film[] = filmList
   .map((f, i) => ({ f, i }))
-  .sort((a, b) => b.f.published.localeCompare(a.f.published) || a.i - b.i)
+  .sort(
+    (a, b) =>
+      Number(Boolean(b.f.first)) - Number(Boolean(a.f.first)) ||
+      b.f.published.localeCompare(a.f.published) ||
+      a.i - b.i,
+  )
   .map(({ f }) => f);
