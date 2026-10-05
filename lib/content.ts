@@ -13,6 +13,8 @@ export const brand = {
 export const contact = {
   email: "",
   whatsapp: "",
+  // where the enquiry form at the foot of the page sends its notes
+  enquiryTo: "run1000hills@gmail.com",
 };
 
 export const hero = {

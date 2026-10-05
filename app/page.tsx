@@ -194,7 +194,7 @@ export default function Home() {
             )}
           </div>
           <div className="lg:border-l lg:border-bone/12 lg:pl-16">
-            <EnquiryForm />
+            <EnquiryForm to={contact.enquiryTo} />
           </div>
         </div>
         <footer className="border-t border-bone/10">
