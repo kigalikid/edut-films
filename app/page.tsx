@@ -5,6 +5,7 @@ import HeroVideo from "@/components/HeroVideo";
 import InView from "@/components/InView";
 import Portrait from "@/components/Portrait";
 import JerusalemWall from "@/components/JerusalemWall";
+import Linked from "@/components/Linked";
 import ServicesPanels from "@/components/ServicesPanels";
 import StoneWall from "@/components/StoneWall";
 import { about, brand, closing, contact, films, filmsIntro, hero, meaning, services } from "@/lib/content";
@@ -137,7 +138,9 @@ export default function Home() {
               <Portrait name={about.name} />
               <div className="min-w-0 pb-1">
                 <p className="font-display text-[22px] leading-tight">{about.name}</p>
-                <p className={`${label} mt-2 text-ash`}>{about.place}</p>
+                <p className={`${label} mt-2 text-ash`}>
+                  <Linked text={about.place} />
+                </p>
               </div>
             </div>
           </div>
@@ -146,7 +149,7 @@ export default function Home() {
             <div className="space-y-5 text-[17px] leading-relaxed text-ink/75">
               {about.body.map((p, i) => (
                 <p key={i} data-r="block" style={{ "--i": 250 + i * 140 } as CSSProperties}>
-                  {p}
+                  <Linked text={p} />
                 </p>
               ))}
             </div>
@@ -158,7 +161,9 @@ export default function Home() {
               {about.facts.map((f) => (
                 <div key={f.k}>
                   <dt className={`${label} text-ash`}>{f.k}</dt>
-                  <dd className="mt-2 text-[15px] leading-snug text-ink">{f.v}</dd>
+                  <dd className="mt-2 text-[15px] leading-snug text-ink">
+                    <Linked text={f.v} />
+                  </dd>
                 </div>
               ))}
             </dl>

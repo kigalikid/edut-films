@@ -103,7 +103,7 @@ export type Film = {
 export const filmsIntro = {
   eyebrow: "The films",
   title: "Step inside.",
-  body: "A selection of Michael's work from the Galilee and Jerusalem.",
+  body: "A selection of Michael's work from the Holy Land.",
 };
 
 const filmList: Film[] = [

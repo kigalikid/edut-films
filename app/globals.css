@@ -156,6 +156,17 @@ body {
   to { opacity: 1; transform: none; }
 }
 
+/* Links out to Magdala and One Step Closer: the same colour as the text around them,
+   marked by a fine underline that turns red on hover */
+.ext-link {
+  text-decoration: underline;
+  text-decoration-color: rgba(27, 22, 18, 0.32);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.25s ease, color 0.25s ease;
+}
+.ext-link:hover { color: var(--color-ink); text-decoration-color: var(--color-ahmar); }
+
 /* Portrait: the same pale mat and soft shadow as the films */
 .portrait {
   box-shadow: 0 0 0 5px #fff, 0 0 0 6px rgba(60, 44, 28, 0.14), 0 22px 36px -20px rgba(60, 44, 28, 0.5);
