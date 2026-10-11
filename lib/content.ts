@@ -30,7 +30,9 @@ export const meaning = {
 };
 
 // Each service is named by one three-letter Hebrew word.
-// `still` is the YouTube id of one of Michael's films, used as the picture behind the open panel.
+// The picture behind the open panel is either `still` (the YouTube id of one of Michael's
+// films) or `image` (a file in public/). `frame` optionally sets how a picture is cropped
+// in the wide desktop panel: its size and which part of it shows.
 export const services = [
   {
     n: "01",
@@ -48,7 +50,10 @@ export const services = [
     gloss: "moment",
     title: "Social Content",
     body: "Short-form videos, photos, interviews, and behind-the-scenes moments, captured and edited for quick turnaround. Content your group can share while the journey is still happening.",
-    still: "XmsZDbzTUtE",
+    // Michael's own picture for this panel. On desktop it is sized to the panel's height and
+    // hung off the right edge, so the whole phone shows on the open side, clear of the text.
+    image: "/rega.jpg",
+    frame: { size: "auto 130%", position: "right -150px top 35%" },
   },
   {
     n: "03",
@@ -79,6 +84,12 @@ export const about = {
     { k: "Films for", v: "One Step Closer, Magdala and Christian groups" },
     { k: "Trained", v: "Architecture, Virginia Tech" },
   ],
+};
+
+// Set quietly above the contact section, at Michael's request.
+export const verse = {
+  text: "\u201CTo bear witness concerning the light.\u201D",
+  ref: "John 1:7",
 };
 
 export const closing = {

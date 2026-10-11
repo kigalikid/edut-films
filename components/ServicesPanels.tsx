@@ -9,11 +9,15 @@ type Service = {
   gloss: string;
   title: string;
   body: string;
-  still: string;
+  still?: string;
+  image?: string;
+  frame?: { size: string; position: string };
 };
 
 const label = "font-mono text-[11px] uppercase tracking-[0.22em]";
 const HOLD_MS = 5200; // how long each panel stays open while the section runs itself
+
+const picture = (s: Service) => s.image ?? `https://i.ytimg.com/vi_webp/${s.still}/maxresdefault.webp`;
 
 const letters = (word: string) => word.match(/\p{L}\p{M}*/gu) ?? [word];
 
@@ -72,7 +76,12 @@ export default function ServicesPanels({ services }: { services: readonly Servic
                 {/* the picture, and the pale veil that keeps the words readable over it */}
                 <span
                   className="svc-still absolute inset-0 hidden bg-cover bg-center md:block"
-                  style={{ backgroundImage: `url(https://i.ytimg.com/vi_webp/${s.still}/maxresdefault.webp)` }}
+                  style={{
+                    backgroundImage: `url(${picture(s)})`,
+                    ...(s.frame
+                      ? { backgroundSize: s.frame.size, backgroundPosition: s.frame.position, backgroundRepeat: "no-repeat" }
+                      : {}),
+                  }}
                   aria-hidden
                 />
                 <span className="svc-veil absolute inset-0 hidden md:block" aria-hidden />
@@ -94,14 +103,21 @@ export default function ServicesPanels({ services }: { services: readonly Servic
                     <span className="svc-dim block font-display text-[22px] leading-tight md:mt-3 md:text-[24px]">{s.title}</span>
                   </span>
 
-                  {/* phones: the description folds open here */}
+                  {/* phones: the picture and the description fold open here */}
                   <span className="svc-fold md:hidden">
-                    <span className="block text-[15.5px] leading-relaxed text-ink/80">{s.body}</span>
+                    <span className="block">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={picture(s)} alt="" loading="lazy" className="svc-photo mb-4 block aspect-video w-full object-cover" />
+                      <span className="block text-[15.5px] leading-relaxed text-ink/80">{s.body}</span>
+                    </span>
                   </span>
                 </span>
 
                 {/* wider screens: the description stands beside the word */}
-                <span className="svc-body absolute left-[290px] top-1/2 hidden w-[290px] -translate-y-1/2 text-[15.5px] leading-relaxed text-ink/85 md:block">
+                <span
+                  className="svc-body absolute left-[290px] top-1/2 hidden w-[290px] -translate-y-1/2 text-[15.5px] leading-relaxed text-ink/85 md:block"
+                  style={{ width: 252 }}
+                >
                   {s.body}
                 </span>
               </button>

@@ -8,7 +8,7 @@ import JerusalemWall from "@/components/JerusalemWall";
 import Linked from "@/components/Linked";
 import ServicesPanels from "@/components/ServicesPanels";
 import StoneWall from "@/components/StoneWall";
-import { about, brand, closing, contact, films, filmsIntro, hero, meaning, services } from "@/lib/content";
+import { about, brand, closing, contact, films, filmsIntro, hero, meaning, services, verse } from "@/lib/content";
 
 const label = "font-mono text-[11px] uppercase tracking-[0.22em]";
 
@@ -123,7 +123,7 @@ export default function Home() {
 
       {/* About */}
       <section id="about" className="scroll-mt-8 bg-bone">
-        <InView className="mx-auto grid max-w-[1240px] gap-12 px-6 py-20 sm:px-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-16 lg:py-28">
+        <InView className="mx-auto grid max-w-[1240px] gap-12 px-6 pb-14 pt-20 sm:px-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-16 lg:pb-20 lg:pt-28">
           <div>
             <p data-r="block" className={`${label} text-ash`}>{about.eyebrow}</p>
             <h2
@@ -168,6 +168,16 @@ export default function Home() {
               ))}
             </dl>
           </div>
+        </InView>
+      </section>
+
+      {/* The verse the name comes from, set quietly before the close */}
+      <section className="bg-bone">
+        <InView className="mx-auto max-w-[1240px] px-6 pb-16 sm:px-8 lg:pb-20">
+          <figure data-r="block" className="verse mx-auto flex max-w-[40rem] flex-col items-center border-t border-ink/12 pt-12 text-center lg:pt-14">
+            <blockquote className="font-display text-[22px] leading-[1.35] text-ink/75 sm:text-[26px]">{verse.text}</blockquote>
+            <figcaption className={`${label} mt-4 text-ash`}>{verse.ref}</figcaption>
+          </figure>
         </InView>
       </section>
 

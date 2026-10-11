@@ -187,6 +187,7 @@ body {
   to { transform: scale(1.12); }
 }
 .svc-veil {
+  inset: -1px; /* a hair past the edges, so no sliver of the picture shows unveiled */
   background: linear-gradient(90deg, var(--color-meleke) 0%, var(--color-meleke) 46%, rgba(241, 235, 223, 0.82) 62%, rgba(241, 235, 223, 0.18) 100%);
 }
 
@@ -204,6 +205,9 @@ body {
 
 .svc-body { opacity: 0; transform: translateY(10px); transition: opacity 0.3s ease, transform 0.3s ease; }
 .svc-panel[data-on="true"] .svc-body { opacity: 1; transform: none; transition: opacity 0.6s ease 0.35s, transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) 0.35s; }
+
+/* phones: the picture inside the open panel, with the same pale mat as the films */
+.svc-photo { border-radius: 2px; box-shadow: 0 0 0 4px var(--color-bone), 0 0 0 5px rgba(60, 44, 28, 0.14); }
 
 /* phones: the description folds open under the word */
 .svc-fold { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.6s cubic-bezier(0.22, 0.61, 0.36, 1); }
